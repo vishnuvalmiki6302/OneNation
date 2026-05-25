@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: #f8fafc;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -19,16 +19,15 @@
 
         .login-wrapper {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(26, 35, 126, 0.1);
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
             overflow: hidden;
-            min-height: 700px;
-            border: 1px solid rgba(255,255,255,0.4);
+            min-height: 600px;
+            border: 1px solid #e2e8f0;
         }
 
         .login-info {
@@ -37,7 +36,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(26, 35, 126, 0.02), rgba(21, 101, 192, 0.05));
+            background: #f1f5f9;
+            border-right: 1px solid #e2e8f0;
         }
 
         .login-form-container {
@@ -50,87 +50,70 @@
         }
 
         .badge-official {
-            background: linear-gradient(135deg, #1a237e, #1565c0);
-            color: white;
+            background: #e2e8f0;
+            color: #475569;
             padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             display: inline-block;
             margin-bottom: 24px;
-            box-shadow: 0 4px 15px rgba(26,35,126,0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: none;
         }
 
         .main-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #1a237e, #1565c0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: none;
+            color: #0f172a;
+            -webkit-text-fill-color: #0f172a;
             line-height: 1.1;
             margin-bottom: 24px;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
         }
 
         .main-desc {
-            font-size: 1.1rem;
-            color: #5a5a7a;
+            font-size: 1.05rem;
+            color: #64748b;
             line-height: 1.6;
             margin-bottom: 40px;
-            max-width: 90%;
         }
-
-        .hero-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #1a237e, #0d1553);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(26,35,126,0.3);
-        }
-
-        /* Abstract connection visualization */
-        .node { position: absolute; width: 6px; height: 6px; background: rgba(255,255,255,0.8); border-radius: 50%; box-shadow: 0 0 10px rgba(255,255,255,0.8); }
-        .node-center { width: 60px; height: 60px; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; border-radius: 12px; backdrop-filter: blur(4px); }
 
         .form-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid #eaeaea;
+            background: transparent;
+            padding: 0;
+            border: none;
+            box-shadow: none;
         }
 
         .form-title {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1a237e;
+            color: #0f172a;
             margin-bottom: 8px;
         }
 
         .form-subtitle {
-            color: #5a5a7a;
+            color: #64748b;
             font-size: 0.95rem;
             margin-bottom: 30px;
         }
 
         .form-control {
-            border: 1px solid #e0e0e0;
+            border: 1px solid #e2e8f0;
             padding: 12px 16px;
             padding-left: 44px;
             border-radius: 8px;
             font-size: 0.95rem;
             transition: all 0.2s;
-            background: #fcfcfc;
+            background: #f8fafc;
         }
 
         .form-control:focus {
-            border-color: #1a237e;
-            box-shadow: 0 0 0 4px rgba(26, 35, 126, 0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
             background: white;
         }
 
@@ -139,11 +122,11 @@
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #9aa0a6;
+            color: #94a3b8;
         }
 
         .btn-login {
-            background: linear-gradient(135deg, #1a237e, #1565c0);
+            background: #0f172a;
             color: white;
             width: 100%;
             padding: 14px;
@@ -152,13 +135,14 @@
             font-size: 1rem;
             border: none;
             margin-top: 16px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(26,35,126,0.3);
+            transition: all 0.2s;
+            box-shadow: none;
         }
 
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26,35,126,0.4);
+            background: #1e293b;
+            transform: translateY(0);
+            box-shadow: none;
         }
 
         .top-brand {
@@ -169,7 +153,7 @@
             align-items: center;
             gap: 12px;
             font-weight: 700;
-            color: #1a237e;
+            color: #0f172a;
             font-size: 1.2rem;
         }
 
@@ -177,18 +161,18 @@
             text-align: center;
             margin-top: 24px;
             font-size: 0.9rem;
-            color: #5a5a7a;
+            color: #64748b;
         }
 
         .auth-switch a {
-            color: #1565c0;
+            color: #2563eb;
             font-weight: 600;
             text-decoration: none;
             transition: color 0.2s;
         }
 
         .auth-switch a:hover {
-            color: #1a237e;
+            color: #1d4ed8;
         }
 
         @media (max-width: 992px) {
@@ -202,7 +186,7 @@
 <body>
 
     <div class="top-brand d-none d-lg-flex">
-        <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1a237e, #1565c0); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">
+        <div style="width: 32px; height: 32px; background: #0f172a; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white;">
             <i class="fas fa-university"></i>
         </div>
         OneID Pension System

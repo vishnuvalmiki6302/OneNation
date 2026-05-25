@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('enrollment_number')->unique();
             $table->date('pension_start_date');
             $table->decimal('monthly_benefit_amount', 10, 2);
-            $table->enum('pension_status', ['Active', 'Pending', 'Suspended', 'Completed'])->default('Pending');
+            $table->enum('pension_status', ['Active', 'Pending', 'Suspended', 'Completed', 'Rejected'])->default('Pending');
             $table->text('notes')->nullable();
             $table->timestamps();
 

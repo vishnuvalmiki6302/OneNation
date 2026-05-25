@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Citizen extends Model
 {
     protected $fillable = [
+        'user_id',
         'full_name',
         'aadhaar_number',
         'mobile_number',
@@ -25,6 +26,11 @@ class Citizen extends Model
     ];
 
     // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function pensionAssignments(): HasMany
     {
         return $this->hasMany(CitizenPension::class);
@@ -33,6 +39,11 @@ class Citizen extends Model
     public function duplicateLogs(): HasMany
     {
         return $this->hasMany(DuplicateLog::class, 'original_citizen_id');
+    }
+
+    public function citizenApplications(): HasMany
+    {
+        return $this->hasMany(CitizenApplication::class);
     }
 
     // Accessors

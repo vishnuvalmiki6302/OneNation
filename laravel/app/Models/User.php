@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasMany(DuplicateLog::class, 'reviewed_by');
     }
 
+    public function citizen()
+    {
+        return $this->hasOne(Citizen::class, 'user_id');
+    }
+
     // Role checking methods
     public function isAdmin(): bool
     {
@@ -72,5 +77,10 @@ class User extends Authenticatable
     public function isOperator(): bool
     {
         return $this->role === 'Operator';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'User';
     }
 }

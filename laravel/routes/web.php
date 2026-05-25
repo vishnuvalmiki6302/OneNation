@@ -17,11 +17,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/home', [DashboardController::class, 'dashboard'])->name('home');
 
+    // Profile (User)
+    Route::get('/profile/create', [App\Http\Controllers\ProfileController::class, 'create'])->name('profile.create');
+    Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');
+
+    // Schemes (User)
+    Route::get('/user/schemes', [App\Http\Controllers\UserSchemeController::class, 'index'])->name('user.schemes.index');
+    Route::get('/user/schemes/{scheme}/apply', [App\Http\Controllers\UserSchemeController::class, 'apply'])->name('user.schemes.apply');
+    Route::post('/user/schemes/{scheme}/apply', [App\Http\Controllers\UserSchemeController::class, 'storeApplication'])->name('citizen.application.store');
+
     // Citizens CRUD
     Route::resource('citizens', CitizenController::class);
 
     // Pension Schemes CRUD
     Route::resource('pension-schemes', PensionSchemeController::class);
+
+    // Admin Applications
+    Route::get('applications', [App\Http\Controllers\ApplicationController::class, 'index'])->name('applications.index');
+    Route::get('applications/{application}', [App\Http\Controllers\ApplicationController::class, 'show'])->name('applications.show');
+    Route::put('applications/{application}', [App\Http\Controllers\ApplicationController::class, 'update'])->name('applications.update');
 
     // Citizen Pensions CRUD
     Route::resource('citizen-pensions', CitizenPensionController::class);

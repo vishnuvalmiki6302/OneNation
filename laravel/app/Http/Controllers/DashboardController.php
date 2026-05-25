@@ -7,11 +7,20 @@ use App\Models\PensionScheme;
 use App\Models\CitizenPension;
 use App\Models\DuplicateLog;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class DashboardController extends Controller
 {
-    public function dashboard(): View
+    public function dashboard(): View|RedirectResponse
     {
+        $user = auth()->user();
+
+        if ($user && $user->isUser()) {
+            if (!$user->citizen) {
+                return redirect()->route('profile.create');
+            }
+            return view('user.dashboard', compact('user'));
+        }
         $totalCitizens = Citizen::count();
         $activeSchemes = PensionScheme::where('status', 'Active')->count();
         $totalAssignments = CitizenPension::count();
