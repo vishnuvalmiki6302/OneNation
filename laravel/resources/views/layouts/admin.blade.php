@@ -656,8 +656,8 @@
     <!-- Top Navbar -->
     <header class="top-navbar">
         <a href="{{ route('dashboard') }}" class="navbar-brand">
-            <div class="brand-icon">
-                <i class="fas fa-fingerprint"></i>
+            <div class="brand-icon" style="background: transparent;">
+                <img src="https://i.pinimg.com/originals/e4/4a/80/e44a8041c60a2b81de3dc5770383d586.png" alt="Logo" style="height: 36px; width: auto; object-fit: contain;">
             </div>
             <div>
                 <span>OneID Pension System</span>
@@ -713,7 +713,10 @@
                 @endif
             </a>
             <a href="{{ route('citizen-pensions.index') }}" class="sidebar-link {{ request()->routeIs('citizen-pensions.*') ? 'active' : '' }}">
-                <i class="fas fa-link"></i> Assignments
+                <i class="fas fa-file-invoice-dollar"></i> Active Pensions
+            </a>
+            <a href="{{ route('admin.tickets.index') }}" class="sidebar-link {{ request()->routeIs('admin.tickets.*') ? 'active' : '' }}">
+                <i class="fas fa-headset"></i> Support Tickets
             </a>
         </div>
 
@@ -736,6 +739,15 @@
             </a>
             <a href="{{ route('profile.create') }}" class="sidebar-link {{ request()->routeIs('profile.*') ? 'active' : '' }}">
                 <i class="fas fa-id-card"></i> Profile Details
+            </a>
+            <a href="{{ route('user.transactions.index') }}" class="sidebar-link {{ request()->routeIs('user.transactions.*') ? 'active' : '' }}">
+                <i class="fas fa-history"></i> Payment History
+            </a>
+            <a href="{{ route('user.certificates.index') }}" class="sidebar-link {{ request()->routeIs('user.certificates.*') ? 'active' : '' }}">
+                <i class="fas fa-certificate"></i> My Documents
+            </a>
+            <a href="{{ route('user.support.create') }}" class="sidebar-link {{ request()->routeIs('user.support.*') ? 'active' : '' }}">
+                <i class="fas fa-headset"></i> Support Desk
             </a>
         </div>
         @endif

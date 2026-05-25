@@ -91,7 +91,7 @@
                         </a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ route('user.transactions.index') }}" class="text-decoration-none">
                             <div class="stat-card border border-success border-opacity-25 bg-success bg-opacity-10 h-100 p-4 rounded-3 text-center transition-all hover-shadow">
                                 <i class="fas fa-history text-success mb-3" style="font-size: 2.5rem;"></i>
                                 <h5 class="fw-bold text-dark mb-1">Payment History</h5>
@@ -100,11 +100,20 @@
                         </a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ route('user.support.create') }}" class="text-decoration-none">
                             <div class="stat-card border border-info border-opacity-25 bg-info bg-opacity-10 h-100 p-4 rounded-3 text-center transition-all hover-shadow">
                                 <i class="fas fa-headset text-info mb-3" style="font-size: 2.5rem;"></i>
                                 <h5 class="fw-bold text-dark mb-1">Support Desk</h5>
                                 <p class="text-secondary small mb-0">Raise a ticket for assistance</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ route('user.certificates.index') }}" class="text-decoration-none">
+                            <div class="stat-card border border-primary border-opacity-25 bg-primary bg-opacity-10 h-100 p-4 rounded-3 text-center transition-all hover-shadow">
+                                <i class="fas fa-certificate text-primary mb-3" style="font-size: 2.5rem;"></i>
+                                <h5 class="fw-bold text-dark mb-1">My Documents</h5>
+                                <p class="text-secondary small mb-0">Upload documents</p>
                             </div>
                         </a>
                     </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,17 @@
     <title>Secure Sign-In - OneID-Pension Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background-color: #f8fafc;
+            background: linear-gradient(135deg,
+                    rgba(255, 153, 51, 0.5) 0%,
+                    rgba(255, 255, 255, 1) 45%,
+                    rgba(0, 0, 128, 0.15) 50%,
+                    rgba(19, 136, 8, 0.5) 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -19,14 +26,14 @@
 
         .login-wrapper {
             width: 100%;
-            max-width: 1000px;
+            max-width: 850px;
             margin: 0 auto;
             display: flex;
             background: #ffffff;
             border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            min-height: 600px;
+            min-height: 500px;
             border: 1px solid #e2e8f0;
         }
 
@@ -121,7 +128,7 @@
         .auth-toggle-btn.active {
             background: white;
             color: #0f172a;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .form-control {
@@ -182,7 +189,7 @@
             font-weight: bold;
             color: #0f172a;
             letter-spacing: 4px;
-            background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+            background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.05) 2px, rgba(0, 0, 0, 0.05) 4px);
             padding: 4px 10px;
         }
 
@@ -217,18 +224,37 @@
         }
 
         @media (max-width: 992px) {
-            .login-wrapper { flex-direction: column; border-radius: 0; min-height: 100vh; }
-            .login-info { padding: 40px 20px; flex: none; }
-            .login-form-container { padding: 40px 20px; }
-            .top-brand { position: relative; top: 0; left: 0; margin-bottom: 20px; }
+            .login-wrapper {
+                flex-direction: column;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+
+            .login-info {
+                padding: 40px 20px;
+                flex: none;
+            }
+
+            .login-form-container {
+                padding: 40px 20px;
+            }
+
+            .top-brand {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="top-brand d-none d-lg-flex">
-        <div style="width: 32px; height: 32px; background: #0f172a; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fas fa-university"></i>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://i.pinimg.com/originals/e4/4a/80/e44a8041c60a2b81de3dc5770383d586.png" alt="Logo"
+                style="height: 32px; width: auto; object-fit: contain;">
         </div>
         OneID Pension System
     </div>
@@ -238,26 +264,8 @@
         <div class="login-info">
             <div class="badge-official">Official Government Portal</div>
             <h1 class="main-title">One Citizen • One<br>Pension Identity</h1>
-            <p class="main-desc">A unified platform designed to provide every citizen with a seamless, secure, and transparent digital pension identity. Empowering the workforce through modern digital governance.</p>
-            
-            <div class="hero-image">
-                <!-- Abstract network graphic -->
-                <div class="node-center node"><i class="fas fa-user"></i></div>
-                <div class="node" style="top: 20%; left: 30%;"></div>
-                <div class="node" style="top: 40%; left: 70%;"></div>
-                <div class="node" style="top: 70%; left: 40%;"></div>
-                <div class="node" style="top: 60%; left: 80%;"></div>
-                <div class="node" style="top: 30%; left: 20%;"></div>
-                
-                <!-- Connecting lines simulation -->
-                <svg width="100%" height="100%" style="position: absolute; top:0; left:0; pointer-events: none;">
-                    <line x1="50%" y1="50%" x2="30%" y2="20%" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                    <line x1="50%" y1="50%" x2="70%" y2="40%" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                    <line x1="50%" y1="50%" x2="40%" y2="70%" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                    <line x1="50%" y1="50%" x2="80%" y2="60%" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                    <line x1="50%" y1="50%" x2="20%" y2="30%" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                </svg>
-            </div>
+            <p class="main-desc">A unified platform designed to provide every citizen with a seamless, secure, and
+                transparent digital pension identity. Empowering the workforce through modern digital governance.</p>
         </div>
 
         <!-- Right Side: Login Form -->
@@ -273,10 +281,11 @@
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    
+
                     <div class="position-relative mb-3">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" value="{{ old('email') }}" required autofocus>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Email Address" value="{{ old('email') }}" required autofocus>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -286,8 +295,11 @@
 
                     <div class="position-relative mb-3">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password / PIN" required>
-                        <i class="fas fa-eye text-secondary position-absolute" style="right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                        <input type="password" name="password"
+                            class="form-control @error('password') is-invalid @enderror" placeholder="Password / PIN"
+                            required>
+                        <i class="fas fa-eye text-secondary position-absolute"
+                            style="right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -301,7 +313,8 @@
                             <span class="captcha-text">X7R2K</span>
                             <i class="fas fa-redo text-primary" style="cursor: pointer;"></i>
                         </div>
-                        <input type="text" class="form-control" style="width: 120px; padding-left: 12px; background: white;" placeholder="Captcha">
+                        <input type="text" class="form-control"
+                            style="width: 120px; padding-left: 12px; background: white;" placeholder="Captcha">
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mt-3 mb-4 px-1">
@@ -311,7 +324,9 @@
                                 Remember me
                             </label>
                         </div>
-                        <a href="#" style="font-size: 0.9rem; color: #1a237e; text-decoration: none; font-weight: 600;">Forgot PIN?</a>
+                        <a href="#"
+                            style="font-size: 0.9rem; color: #1a237e; text-decoration: none; font-weight: 600;">Forgot
+                            PIN?</a>
                     </div>
 
                     <button type="submit" class="btn-login">
@@ -319,28 +334,36 @@
                     </button>
 
                     <div class="text-center mt-4" style="font-size: 0.9rem; color: #5a5a7a;">
-                        Don't have an account? <a href="{{ route('register') }}" style="color: #1565c0; font-weight: 600; text-decoration: none;">Create one</a>
+                        Don't have an account? <a href="{{ route('register') }}"
+                            style="color: #1565c0; font-weight: 600; text-decoration: none;">Create one</a>
                     </div>
                 </form>
 
                 @if(app()->environment('local'))
-                <div class="mt-4 pt-4 border-top">
-                    <div class="text-center mb-2" style="font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Developer Quick Login</div>
-                    <div class="d-flex flex-wrap gap-2 justify-content-center">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="quickLogin('admin@onecitizen.gov.in', 'password')">Admin</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="quickLogin('user1@onecitizen.gov.in', 'password')">Citizen (Profile)</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="quickLogin('user2@onecitizen.gov.in', 'password')">Citizen (New)</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="quickLogin('vikram@onecitizen.gov.in', 'password')">Citizen (Vikram)</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="quickLogin('meera@onecitizen.gov.in', 'password')">Citizen (Meera)</button>
+                    <div class="mt-4 pt-4 border-top">
+                        <div class="text-center mb-2"
+                            style="font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">
+                            Developer Quick Login</div>
+                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="quickLogin('admin@onecitizen.gov.in', 'password')">Admin</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="quickLogin('user1@onecitizen.gov.in', 'password')">Citizen (Profile)</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="quickLogin('user2@onecitizen.gov.in', 'password')">Citizen (New)</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="quickLogin('vikram@onecitizen.gov.in', 'password')">Citizen (Vikram)</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="quickLogin('meera@onecitizen.gov.in', 'password')">Citizen (Meera)</button>
+                        </div>
                     </div>
-                </div>
-                <script>
-                    function quickLogin(email, password) {
-                        document.querySelector('input[name="email"]').value = email;
-                        document.querySelector('input[name="password"]').value = password;
-                        document.querySelector('form').submit();
-                    }
-                </script>
+                    <script>
+                        function quickLogin(email, password) {
+                            document.querySelector('input[name="email"]').value = email;
+                            document.querySelector('input[name="password"]').value = password;
+                            document.querySelector('form').submit();
+                        }
+                    </script>
                 @endif
 
 
@@ -349,7 +372,8 @@
     </div>
 
     <!-- Footer -->
-    <div style="position: fixed; bottom: 20px; left: 40px; right: 40px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #5a5a7a;">
+    <div
+        style="position: fixed; bottom: 20px; left: 40px; right: 40px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #5a5a7a;">
         <div>&copy; 2026 OneID Pension System. All Rights Reserved.</div>
         <div class="d-flex gap-4">
             <a href="#" class="text-secondary text-decoration-none">Privacy Policy</a>
@@ -360,4 +384,5 @@
     </div>
 
 </body>
+
 </html>
