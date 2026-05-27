@@ -13,184 +13,207 @@
     <style>
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: linear-gradient(135deg,
-                    rgba(255, 153, 51, 0.5) 0%,
-                    rgba(255, 255, 255, 1) 45%,
-                    rgba(0, 0, 128, 0.15) 50%,
-                    rgba(19, 136, 8, 0.5) 100%);
-            background-attachment: fixed;
+            background: linear-gradient(
+                135deg,
+                rgba(255,153,51,0.4) 0%,
+                rgba(255,255,255,1) 50%,
+                rgba(19,136,8,0.4) 100%
+            );
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
+            margin: 0;
         }
 
         .login-wrapper {
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
             background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            min-height: 500px;
-            border: 1px solid #e2e8f0;
+            min-height: 550px;
+            position: relative;
         }
 
+        /* The curved left pane */
         .login-info {
-            flex: 1;
-            padding: 60px;
+            flex: 0 0 45%;
+            background: linear-gradient(135deg, #f15d07ff 0%, #44ae03ff 100%);
+            /* The distinct purple from the image */
+            padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background: #f1f5f9;
-            border-right: 1px solid #e2e8f0;
+            align-items: center;
+            text-align: center;
+            color: white;
+            border-top-right-radius: 150px;
+            border-bottom-right-radius: 150px;
+            z-index: 10;
+            box-shadow: 10px 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .login-form-container {
             flex: 1;
             background: #ffffff;
-            padding: 60px;
+            padding: 50px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        .badge-official {
-            background: #e2e8f0;
-            color: #475569;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            align-items: center;
+            text-align: center;
         }
 
         .main-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #0f172a;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .main-desc {
-            font-size: 1.05rem;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 40px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
-        .form-card {
+        .btn-outline-white {
+            border: 1px solid white;
+            color: white;
             background: transparent;
-            padding: 0;
-            border: none;
-            box-shadow: none;
+            padding: 10px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .btn-outline-white:hover {
+            background: white;
+            color: #3e3270;
         }
 
         .form-title {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 8px;
+            color: #333;
+            margin-bottom: 20px;
         }
 
-        .form-subtitle {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-        }
-
+        /* Keeping the user's toggle buttons */
         .auth-toggle {
             display: flex;
-            background: #f1f5f9;
-            border-radius: 8px;
+            background: #f3f4f6;
+            border-radius: 30px;
             padding: 4px;
-            margin-bottom: 24px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 320px;
         }
 
         .auth-toggle-btn {
             flex: 1;
-            padding: 10px;
+            padding: 8px;
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #64748b;
-            border-radius: 6px;
+            color: #666;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .auth-toggle-btn.active {
             background: white;
-            color: #0f172a;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 15px;
         }
 
         .form-control {
-            border: 1px solid #e2e8f0;
-            padding: 12px 16px;
-            padding-left: 44px;
-            border-radius: 8px;
+            border: none;
+            background: #f3f4f6;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border-radius: 10px;
             font-size: 0.95rem;
-            transition: all 0.2s;
-            background: #f8fafc;
+            color: #333;
+            height: 48px;
+            width: 100%;
         }
 
         .form-control:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            background: white;
+            background: #e5e7eb;
+            box-shadow: none;
+            outline: none;
         }
 
         .input-icon {
             position: absolute;
-            left: 16px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #94a3b8;
+            color: #999;
+            z-index: 5;
         }
 
         .btn-login {
-            background: #0f172a;
+            background: #3e3270;
+            /* Solid purple button */
             color: white;
             width: 100%;
-            padding: 14px;
-            border-radius: 8px;
+            max-width: 180px;
+            padding: 12px;
+            border-radius: 30px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             border: none;
-            margin-top: 16px;
+            margin-top: 10px;
             transition: all 0.2s;
         }
 
         .btn-login:hover {
-            background: #1e293b;
+            background: #2d2454;
         }
 
         .captcha-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 12px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-bottom: 15px;
+            height: 48px;
         }
 
         .captcha-text {
             font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            color: #0f172a;
+            color: #333;
             letter-spacing: 4px;
             background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.05) 2px, rgba(0, 0, 0, 0.05) 4px);
-            padding: 4px 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .top-brand {
@@ -203,36 +226,46 @@
             font-weight: 700;
             color: #0f172a;
             font-size: 1.2rem;
+            z-index: 20;
         }
 
-        .auth-switch {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 0.9rem;
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
             color: #64748b;
+            z-index: 20;
         }
 
-        .auth-switch a {
-            color: #2563eb;
-            font-weight: 600;
+        .footer a {
+            color: #64748b;
             text-decoration: none;
             transition: color 0.2s;
         }
 
-        .auth-switch a:hover {
-            color: #1d4ed8;
+        .footer a:hover {
+            color: #3e3270;
         }
 
         @media (max-width: 992px) {
             .login-wrapper {
                 flex-direction: column;
-                border-radius: 0;
-                min-height: 100vh;
+                border-radius: 20px;
+                min-height: auto;
+                margin: 20px;
+                margin-top: 80px;
+                margin-bottom: 80px;
             }
 
             .login-info {
-                padding: 40px 20px;
                 flex: none;
+                border-radius: 20px 20px 0 0;
+                padding: 40px 20px;
+                box-shadow: none;
             }
 
             .login-form-container {
@@ -240,10 +273,20 @@
             }
 
             .top-brand {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+
+            .footer {
                 position: relative;
-                top: 0;
+                bottom: 0;
                 left: 0;
-                margin-bottom: 20px;
+                right: 0;
+                padding: 20px;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
             }
         }
     </style>
@@ -251,138 +294,136 @@
 
 <body>
 
-    <div class="top-brand d-none d-lg-flex">
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="https://i.pinimg.com/originals/e4/4a/80/e44a8041c60a2b81de3dc5770383d586.png" alt="Logo"
-                style="height: 32px; width: auto; object-fit: contain;">
+    <div class="top-brand d-none d-lg-flex" style="gap: 12px; align-items: center;">
+        <img src="https://i.pinimg.com/originals/e4/4a/80/e44a8041c60a2b81de3dc5770383d586.png" alt="Logo"
+            style="height: 36px; width: auto; object-fit: contain;">
+        <div style="display: flex; flex-direction: column; line-height: 1.2;">
+            <span style="color: #0f172a;">OneID Pension System</span>
+            <span style="font-size: 0.75rem; font-weight: 500; color: #64748b;">Digital Governance Mission</span>
         </div>
-        OneID Pension System
     </div>
 
     <div class="login-wrapper">
-        <!-- Left Side: Info & Branding -->
+        <!-- Left Side: Colored Pane with curved right edge -->
         <div class="login-info">
-            <div class="badge-official">Official Government Portal</div>
-            <h1 class="main-title">One Citizen • One<br>Pension Identity</h1>
-            <p class="main-desc">A unified platform designed to provide every citizen with a seamless, secure, and
-                transparent digital pension identity. Empowering the workforce through modern digital governance.</p>
+            <h1 class="main-title">New Here?</h1>
+            <p class="main-desc">Enter your personal details and start your journey with us.</p>
+            <a href="{{ route('register') }}" class="btn-outline-white">SIGN UP</a>
         </div>
 
         <!-- Right Side: Login Form -->
         <div class="login-form-container">
-            <div class="form-card">
-                <h2 class="form-title">Secure Sign-In</h2>
-                <p class="form-subtitle">Access administrative portal and citizen records</p>
+            <h2 class="form-title">Sign In</h2>
 
-                <div class="auth-toggle">
-                    <div class="auth-toggle-btn active">Admin ID</div>
-                    <div class="auth-toggle-btn">Citizen Login</div>
+            <!-- The buttons you requested to keep are here -->
+            <div class="auth-toggle">
+                <div class="auth-toggle-btn active">Admin ID</div>
+                <div class="auth-toggle-btn">Citizen Login</div>
+            </div>
+
+            <form method="POST" action="{{ route('login') }}" class="login-form">
+                @csrf
+
+                <div class="input-group-custom">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                        placeholder="Email Address" value="{{ old('email') }}" required autofocus>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert"
+                            style="display: block; text-align: left; margin-top: 5px; font-size: 0.8rem;">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
+                <div class="input-group-custom">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                        placeholder="Password" required>
+                    <i class="fas fa-eye text-secondary position-absolute"
+                        style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 5;"></i>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert"
+                            style="display: block; text-align: left; margin-top: 5px; font-size: 0.8rem;">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-                    <div class="position-relative mb-3">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            placeholder="Email Address" value="{{ old('email') }}" required autofocus>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                <!-- Captcha included as requested -->
+                <div class="captcha-box">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="captcha-text">X7R2K</span>
+                        <i class="fas fa-redo text-primary" style="cursor: pointer; font-size: 0.9rem;"></i>
                     </div>
+                    <input type="text" class="form-control m-0"
+                        style="width: 100px; height: 32px; padding: 5px 10px; background: white; font-size: 0.85rem;"
+                        placeholder="Captcha">
+                </div>
 
-                    <div class="position-relative mb-3">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input type="password" name="password"
-                            class="form-control @error('password') is-invalid @enderror" placeholder="Password / PIN"
-                            required>
-                        <i class="fas fa-eye text-secondary position-absolute"
-                            style="right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                <div class="d-flex justify-content-between align-items-center mb-4 mt-2">
+                    <div class="form-check m-0">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <label class="form-check-label text-secondary" style="font-size: 0.8rem;" for="remember">
+                            Remember me
+                        </label>
                     </div>
+                    <a href="#" style="font-size: 0.8rem; color: #666; text-decoration: none;">Forgot Password?</a>
+                </div>
 
-                    <!-- Dummy Captcha for UI fidelity -->
-                    <div class="captcha-box">
-                        <div class="d-flex align-items-center gap-3">
-                            <span class="captcha-text">X7R2K</span>
-                            <i class="fas fa-redo text-primary" style="cursor: pointer;"></i>
-                        </div>
-                        <input type="text" class="form-control"
-                            style="width: 120px; padding-left: 12px; background: white;" placeholder="Captcha">
+                <button type="submit" class="btn-login">SIGN IN</button>
+
+            </form>
+
+            @if(app()->environment('local'))
+                <div class="mt-4 pt-4 border-top w-100">
+                    <div class="text-center mb-2"
+                        style="font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Developer
+                        Quick Login</div>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                            onclick="quickLogin('admin@onecitizen.gov.in', 'password')">Admin</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                            onclick="quickLogin('user1@onecitizen.gov.in', 'password')">Citizen</button>
                     </div>
-
-                    <div class="d-flex justify-content-between align-items-center mt-3 mb-4 px-1">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label text-secondary" style="font-size: 0.9rem;" for="remember">
-                                Remember me
-                            </label>
-                        </div>
-                        <a href="#"
-                            style="font-size: 0.9rem; color: #1a237e; text-decoration: none; font-weight: 600;">Forgot
-                            PIN?</a>
-                    </div>
-
-                    <button type="submit" class="btn-login">
-                        <i class="fas fa-sign-in-alt me-2"></i> Sign In to Dashboard
-                    </button>
-
-                    <div class="text-center mt-4" style="font-size: 0.9rem; color: #5a5a7a;">
-                        Don't have an account? <a href="{{ route('register') }}"
-                            style="color: #1565c0; font-weight: 600; text-decoration: none;">Create one</a>
-                    </div>
-                </form>
-
-                @if(app()->environment('local'))
-                    <div class="mt-4 pt-4 border-top">
-                        <div class="text-center mb-2"
-                            style="font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">
-                            Developer Quick Login</div>
-                        <div class="d-flex flex-wrap gap-2 justify-content-center">
-                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                onclick="quickLogin('admin@onecitizen.gov.in', 'password')">Admin</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                onclick="quickLogin('user1@onecitizen.gov.in', 'password')">Citizen (Profile)</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                onclick="quickLogin('user2@onecitizen.gov.in', 'password')">Citizen (New)</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                onclick="quickLogin('vikram@onecitizen.gov.in', 'password')">Citizen (Vikram)</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                onclick="quickLogin('meera@onecitizen.gov.in', 'password')">Citizen (Meera)</button>
-                        </div>
-                    </div>
-                    <script>
-                        function quickLogin(email, password) {
-                            document.querySelector('input[name="email"]').value = email;
-                            document.querySelector('input[name="password"]').value = password;
-                            document.querySelector('form').submit();
-                        }
-                    </script>
-                @endif
-
-
-            </div>
+                </div>
+            @endif
         </div>
     </div>
 
     <!-- Footer -->
-    <div
-        style="position: fixed; bottom: 20px; left: 40px; right: 40px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #5a5a7a;">
-        <div>&copy; 2026 OneID Pension System. All Rights Reserved.</div>
+    <div class="footer d-none d-lg-flex">
+        <div>&copy; 2026 OneID Pension System.</div>
         <div class="d-flex gap-4">
-            <a href="#" class="text-secondary text-decoration-none">Privacy Policy</a>
-            <a href="#" class="text-secondary text-decoration-none">Terms of Service</a>
-            <a href="#" class="text-secondary text-decoration-none">Help Desk</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Help Desk</a>
         </div>
-        <div class="fw-bold text-primary">Powered by Digital Governance Mission</div>
+        <div class="fw-bold" style="color: #3e3270;">Powered by DGM</div>
     </div>
 
+    <script>
+        function quickLogin(email, password) {
+            document.querySelector('input[name="email"]').value = email;
+            document.querySelector('input[name="password"]').value = password;
+            document.querySelector('form').submit();
+        }
+
+        // Toggle functionality
+        document.querySelectorAll('.auth-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.auth-toggle-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const emailInput = document.querySelector('input[name="email"]');
+                if (this.innerText.includes('Admin')) {
+                    emailInput.placeholder = 'Admin Email Address';
+                } else {
+                    emailInput.placeholder = 'Citizen Email Address';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -48,62 +48,6 @@
                             </td>
                         </tr>
 
-                        <!-- Reply Modal -->
-                        <div class="modal fade" id="replyModal{{ $ticket->id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content border-0 shadow-lg">
-                                    <div class="modal-header bg-light">
-                                        <h5 class="modal-title fw-bold text-dark">
-                                            Ticket {{ $ticket->ticket_number }}
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form action="{{ route('admin.tickets.update', $ticket->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="modal-body p-4">
-                                            <div class="mb-4">
-                                                <h6 class="fw-bold text-dark mb-1">Subject</h6>
-                                                <div class="p-3 bg-light rounded text-dark">{{ $ticket->subject }}</div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <h6 class="fw-bold text-dark mb-1">Description from Citizen</h6>
-                                                <div class="p-3 bg-light rounded text-dark" style="white-space: pre-wrap;">{{ $ticket->description }}</div>
-                                            </div>
-
-                                            @if($ticket->image_path)
-                                                <div class="mb-4">
-                                                    <h6 class="fw-bold text-dark mb-2">Attached Image</h6>
-                                                    <a href="{{ Storage::url($ticket->image_path) }}" target="_blank">
-                                                        <img src="{{ Storage::url($ticket->image_path) }}" class="img-thumbnail rounded shadow-sm" style="max-height: 200px;" alt="Attachment">
-                                                    </a>
-                                                </div>
-                                            @endif
-
-                                            @if($ticket->status === 'Closed')
-                                                <div class="mb-3">
-                                                    <h6 class="fw-bold text-success mb-1">Admin Reply (Resolved at {{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d M Y, H:i') }})</h6>
-                                                    <div class="p-3 bg-success bg-opacity-10 border border-success border-opacity-25 rounded text-dark" style="white-space: pre-wrap;">{{ $ticket->admin_reply }}</div>
-                                                </div>
-                                            @else
-                                                <div class="mb-3">
-                                                    <label class="form-label fw-bold text-primary">Your Reply to Citizen <span class="text-danger">*</span></label>
-                                                    <textarea name="admin_reply" class="form-control" rows="5" placeholder="Type the resolution or reply here..." required></textarea>
-                                                    <div class="form-text">Submitting a reply will automatically resolve and close this ticket.</div>
-                                                </div>
-                                            @endif
-                                        </div>
-                                        <div class="modal-footer bg-light">
-                                            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
-                                            @if($ticket->status !== 'Closed')
-                                                <button type="submit" class="btn btn-primary fw-bold"><i class="fas fa-paper-plane me-1"></i> Submit Reply & Close Ticket</button>
-                                            @endif
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     @empty
                         <tr>
                             <td colspan="6" class="text-center py-5 text-secondary">
@@ -118,4 +62,66 @@
         </div>
     </div>
 </div>
+
+@push('modals')
+@foreach($tickets as $ticket)
+    <!-- Reply Modal -->
+    <div class="modal fade" id="replyModal{{ $ticket->id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold text-dark">
+                        Ticket {{ $ticket->ticket_number }}
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('admin.tickets.update', $ticket->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body p-4">
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-dark mb-1">Subject</h6>
+                            <div class="p-3 bg-light rounded text-dark">{{ $ticket->subject }}</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-dark mb-1">Description from Citizen</h6>
+                            <div class="p-3 bg-light rounded text-dark" style="white-space: pre-wrap;">{{ $ticket->description }}</div>
+                        </div>
+
+                        @if($ticket->image_path)
+                            <div class="mb-4">
+                                <h6 class="fw-bold text-dark mb-2">Attached Image</h6>
+                                <a href="{{ Storage::url($ticket->image_path) }}" target="_blank">
+                                    <img src="{{ Storage::url($ticket->image_path) }}" class="img-thumbnail rounded shadow-sm" style="max-height: 200px;" alt="Attachment">
+                                </a>
+                            </div>
+                        @endif
+
+                        @if($ticket->status === 'Closed')
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Admin Reply (Resolved at {{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d M Y, H:i') }})</h6>
+                                <div class="p-3 bg-success bg-opacity-10 border border-success border-opacity-25 rounded text-dark" style="white-space: pre-wrap;">{{ $ticket->admin_reply }}</div>
+                            </div>
+                        @else
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-primary">Your Reply to Citizen <span class="text-danger">*</span></label>
+                                <textarea name="admin_reply" class="form-control" rows="5" placeholder="Type the resolution or reply here..." required></textarea>
+                                <div class="form-text">Submitting a reply will automatically resolve and close this ticket.</div>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
+                        @if($ticket->status !== 'Closed')
+                            <button type="submit" class="btn btn-primary fw-bold"><i class="fas fa-paper-plane me-1"></i> Submit Reply & Close Ticket</button>
+                        @endif
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
+@endpush
+
 @endsection
